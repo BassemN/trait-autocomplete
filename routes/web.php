@@ -3,5 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    $category = \App\Models\Category::with('parent')->first();
+
+    return $category->parent->name;
 });
